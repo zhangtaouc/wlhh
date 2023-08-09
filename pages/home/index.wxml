@@ -1,0 +1,96 @@
+<view class="home" >
+  <view class="head">
+    <image src="../../images/home/head-bg.jpg" class="head-bg" />
+    <view class="head-text">
+      <view>Wish You Be Happy</view>
+      <view>EveryDay, Smile More</view>
+      <view>Have A Great Summer With You </view>
+    </view>
+  </view>
+  <view class="content">
+    <van-divider contentPosition="center">5月</van-divider>
+    <view class="line-1">
+      <view class="cycle meet" data-index="{{1}}" bindtap="onClickOverFlow">
+        <image src="../../images/home/cycle-meet-bg.png" class="cycle-bg" />
+        <view>遇见</view>
+        <view class="line"></view>
+        <view>你</view>
+      </view>
+    </view>
+    <van-divider contentPosition="left">6月</van-divider>
+    <view class="line-1">
+      <view class="cycle month-6" data-index="{{2}}" bindtap="onClickOverFlow">
+        <image src="../../images/home/cycle-wnq-bg.jpg" class="cycle-bg" />
+        <view>万年泉</view>
+        <view class="desc">火锅？</view>
+      </view>
+      <view class="cycle month-6" data-index="{{3}}" bindtap="onClickOverFlow">
+        <image src="../../images/home/cycle-bg-fushan.png" class="cycle-bg" />
+        <view>浮山</view>
+        <view class="desc">sea</view>
+      </view>
+      <view class="cycle month-6" data-index="{{4}}" bindtap="onClickOverFlow">
+        <image src="../../images/home/cycle-lida-bg.png" class="cycle-bg" />
+        <view>丽达</view>
+        <view class="desc">排骨米饭</view>
+      </view>
+    </view>
+    <van-divider contentPosition="right">7月</van-divider>
+    <view class="line-1">
+      <view class="cycle month-7" data-index="{{5}}" bindtap="onClickOverFlow">
+        <image src="../../images/home/cycle-baozi-bg.png" class="cycle-bg" />
+        <view>汤包</view>
+        <view class="desc">可爱的包子</view>
+      </view>
+      <view class="cycle month-7" data-index="{{6}}" bindtap="onClickOverFlow">
+        <image src="../../images/home/cycle-fangao-bg.png" class="cycle-bg" />
+        <view>梵高</view>
+        <view class="desc">我梦见了画</view>
+      </view>
+    </view>
+    <van-divider contentPosition="left">8月</van-divider>
+    <view class="line-1">
+      <view class="cycle month-7" data-index="{{7}}" bindtap="onClickOverFlow">
+        <image src="../../images/home/cycle-ouc-bg.png" class="cycle-bg" />
+        <view>海大</view>
+        <view class="desc">烧烤</view>
+      </view>
+      <view class="cycle month-8" data-index="{{8}}" bindtap="onClickOverFlow">
+        <image src="../../images/home/cycle-car-bg.png" class="cycle-bg" />
+        <view>丽达</view>
+        <view class="desc">车坏了</view>
+      </view>
+    </view>
+    <van-divider contentPosition="center">in the future</van-divider>
+    <view class="line-1">
+      <view class="cycle month-7" data-index="{{9}}" bindtap="onClickOverFlow">
+        <image src="../../images/home/cycle-future-bg.png" class="cycle-bg" />
+        <view>未来</view>
+        <view class="desc">期待有你</view>
+      </view>
+    </view>
+  </view>
+  <van-overlay show="{{ (isShowOverFlow || isShowFirstVisit) && isLoadSuccess}}" bind:click="closeOverFlow">
+    <view class="over-part" wx:if="{{!isShowFirstVisit}}">
+      <view class="first-into" wx:if="{{isShowMeet}}">
+        <view class="main">{{overFlowInfso.title}}</view>
+        <view class="main">你还记得哪天认识你的吗？</view>
+        <view class="main answer">5月7日</view>
+        <view class="main">5.18遇见你</view>
+        <view class="main answer1">疙瘩汤真好喝！</view>
+        <view class="main">很不巧的是</view>
+        <view class="main answer2">520那天你看牙去了</view>
+      </view>
+      <view class="first-into" wx:if="{{!isShowMeet && !isShowFirstVisit}}">
+        <view class="main main-title" >{{overFlowInfos.title}}</view>
+        <view class="main" wx:for="{{overFlowInfos.info}}" wx:for-item="infos" wx:key="infos">{{infos}}</view>
+      </view>
+    </view>
+    <view class="over-part" wx:else>
+      <view class="visiter">
+        <view class="visiter-title">🤗🤗<text class="visiter-title-info">{{usernameInfo}}</text></view>
+        <van-field value="{{ username }}" placeholder="请输入名字小写首字母" input-align="center" autosize bind:change="changeName"/>
+      </view>
+    </view>
+  </van-overlay>
+</view>

@@ -1,0 +1,15 @@
+{
+  "name": "wlhh",
+  "version": "1.0.0",
+  "description": "wlh",
+  "main": ".eslintrc.js",
+  "dependencies": {
+    "@vant/weapp": "^1.10.23"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,3 +1,4 @@
+import { polyline } from '../../utils/map'
 // index.js
 // 获取应用实例
 const app = getApp()
@@ -11,6 +12,11 @@ Page({
     username: '',
     usernameInfo: '',
     isLoadSuccess: false
+  },
+  goMap() {
+    wx.navigateTo({
+      url: '../map/map'
+    })
   },
   changeName(event) {
     console.log(event.detail)
@@ -82,6 +88,20 @@ Page({
       this.setData({overFlowInfos: overFlowInfo})
     }
     if (number === 9) {
+      // 金狮
+      let overFlowInfo = { title: '', info: [] }
+      overFlowInfo.title = '沙滩的歌声'
+      overFlowInfo.info.push('喷泉、沙滩、歌声、你', '我们吃了饺子、鱼，味道不错', '饭后沙滩漫步',  '你身穿蓝色裙子，美美的', '8.10')
+      this.setData({overFlowInfos: overFlowInfo})
+    }
+    if (number === 10) {
+      // 台东
+      let overFlowInfo = { title: '', info: [] }
+      overFlowInfo.title = '小吃&炎热的海岸'
+      overFlowInfo.info.push('周六的下午异常炎热', '台东的街道还是那么热闹', '在台东略微吃了点东西',  '来到海边','去看了海尔的冰山之角','看到了海信楼', '8.12')
+      this.setData({overFlowInfos: overFlowInfo})
+    }
+    if (number === 100) {
       // 未来
       let overFlowInfo = { title: '', info: [] }
       overFlowInfo.title = '未来可期'
@@ -97,6 +117,7 @@ Page({
       url: '../logs/logs'
     })
   },
+  
   onLoad() {
     this.getVisitRecord('isVisitted')
   },

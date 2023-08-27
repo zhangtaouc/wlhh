@@ -1,10 +1,13 @@
-<view class="home" >
+<view class="home">
   <view class="head">
     <image src="../../images/home/head-bg.jpg" class="head-bg" />
     <view class="head-text">
       <view>Wish You Be Happy</view>
       <view>EveryDay, Smile More</view>
-      <view>Have A Great Summer With You </view>
+      <view>Looking Forward To Meeting Again</view>
+      <view class="head-map">
+        <van-icon name="location-o" color="white" size="70rpx" bindtap="goMap"/>
+      </view>
     </view>
   </view>
   <view class="content">
@@ -60,10 +63,20 @@
         <view>丽达</view>
         <view class="desc">车坏了</view>
       </view>
+      <view class="cycle month-8" data-index="{{9}}" bindtap="onClickOverFlow">
+        <image src="../../images/home/cycle-hh-bg.png" class="cycle-bg" />
+        <view>金狮广场</view>
+        <view class="desc">好吃的饺子</view>
+      </view>
+      <view class="cycle month-8" data-index="{{10}}" bindtap="onClickOverFlow">
+        <image src="../../images/home/you-bg.png" class="cycle-bg" />
+        <view>台东&海</view>
+        <view class="desc">小吃和闷热的海</view>
+      </view>
     </view>
     <van-divider contentPosition="center">in the future</van-divider>
     <view class="line-1">
-      <view class="cycle month-7" data-index="{{9}}" bindtap="onClickOverFlow">
+      <view class="cycle month-7" data-index="{{100}}" bindtap="onClickOverFlow">
         <image src="../../images/home/cycle-future-bg.png" class="cycle-bg" />
         <view>未来</view>
         <view class="desc">期待有你</view>
@@ -82,14 +95,14 @@
         <view class="main answer2">520那天你看牙去了</view>
       </view>
       <view class="first-into" wx:if="{{!isShowMeet && !isShowFirstVisit}}">
-        <view class="main main-title" >{{overFlowInfos.title}}</view>
+        <view class="main main-title">{{overFlowInfos.title}}</view>
         <view class="main" wx:for="{{overFlowInfos.info}}" wx:for-item="infos" wx:key="infos">{{infos}}</view>
       </view>
     </view>
     <view class="over-part" wx:else>
       <view class="visiter">
         <view class="visiter-title">🤗🤗<text class="visiter-title-info">{{usernameInfo}}</text></view>
-        <van-field value="{{ username }}" placeholder="请输入名字小写首字母" input-align="center" autosize bind:change="changeName"/>
+        <van-field value="{{ username }}" placeholder="请输入名字小写首字母" input-align="center" autosize bind:change="changeName" />
       </view>
     </view>
   </van-overlay>

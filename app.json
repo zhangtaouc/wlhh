@@ -6,7 +6,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "To HH",
+    "navigationBarTitleText": "小猪",
     "navigationBarTextStyle":"black"
   },
   "sitemapLocation": "sitemap.json"

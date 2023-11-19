@@ -70,7 +70,7 @@ Page({
       // 梵高
       let overFlowInfo = { title: '', info: [] }
       overFlowInfo.title = '10月的最后一天'
-      overFlowInfo.info.push('我这脑子瓦特了', '给你写了个小作文', '第二天你生病了', '我很惭愧，在你生病的时候我还那样。。。', '很对不起你')
+      overFlowInfo.info.push('今天天气有点冷', '给你写了个小作文', '第二天你生病了', '我很惭愧，在你生病的时候我还那样。。。', '很对不起你')
       this.setData({overFlowInfos: overFlowInfo})
     }
     if (number === 7) {

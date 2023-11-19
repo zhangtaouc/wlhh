@@ -15,7 +15,7 @@
     <view class="line-1">
       <view class="cycle meet" data-index="{{1}}" bindtap="onClickOverFlow">
         <image src="../../images/home/cycle-meet-bg.png" class="cycle-bg" />
-        <view>遇见</view>
+        <view>认识</view>
         <view class="line"></view>
         <view>你</view>
       </view>
@@ -55,7 +55,7 @@
     <view class="line-1">
       <view class="cycle month-6" data-index="{{7}}" bindtap="onClickOverFlow">
         <image src="../../images/home/11.png" class="cycle-bg" />
-        <view>不友好</view>
+        <view>感冒</view>
         <view class="desc">疲惫</view>
       </view>
       <view class="cycle month-6" data-index="{{8}}" bindtap="onClickOverFlow">

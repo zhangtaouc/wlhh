@@ -1,13 +1,34 @@
 {
-  "pages":[
-    "pages/home/index",
-    "pages/map/map"
-  ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "To HH",
-    "navigationBarTextStyle":"black"
-  },
-  "sitemapLocation": "sitemap.json"
+    "pages": [
+        "pages/home/index",
+        "pages/map/map",
+        "pages/me/me"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "To HH",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#333",
+        "selectedColor": "#FFC0CB",
+        "borderStyle": "white",
+        "backgroundColor": "#efefef",
+        "list": [
+            {
+                "pagePath": "pages/home/index",
+                "iconPath": "images/tab/home_unselect.png",
+                "selectedIconPath": "images/tab/home.png",
+                "text": "about"
+            },
+            {
+                "pagePath": "pages/me/me",
+                "iconPath": "images/tab/me_unselect.png",
+                "selectedIconPath": "images/tab/me.png",
+                "text": "you"
+            }
+        ]
+    },
+    "sitemapLocation": "sitemap.json"
 }

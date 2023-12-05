@@ -1,0 +1,236 @@
+.me {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #f2f2f2;
+  overflow: scroll;
+}
+
+/* .me .header-part {
+    position: relative;
+    margin: 24rpx 24rpx 0;
+    background-color: #fff;
+    border-radius: 20rpx;
+    padding: 20rpx 24rpx;
+    box-shadow:
+        0 1px 1px hsl(0deg 0% 0% / 0.075),
+        0 2px 2px hsl(0deg 0% 0% / 0.075),
+        0 4px 4px hsl(0deg 0% 0% / 0.075),
+        0 8px 8px hsl(0deg 0% 0% / 0.075),
+        0 16px 16px hsl(0deg 0% 0% / 0.075);
+} */
+
+.me .header-part {
+  width: 100%;
+  height: 550rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-content {
+  position: relative;
+  z-index: 0;
+  color: #f2f2f2;
+  padding: 24rpx;
+}
+
+.header-content .day {
+  font-size: 200rpx;
+  font-weight: bolder;
+  margin-top: 18rpx;
+}
+
+.min-bao {
+  margin: 160rpx 0 140rpx !important;
+  font-size: 30rpx;
+  font-weight: normal !important;
+}
+.meet-time {
+  width: 100%;
+  text-align: right;
+}
+
+.min-bao .day {
+  font-size: 50rpx;
+}
+
+.header-content .change {
+  position: absolute;
+  left: 24rpx;
+  top: 24rpx;
+  width: 50rpx;
+}
+
+.header-part-bg {
+  width: 100%;
+  position: absolute;
+  z-index: 0;
+  filter: blur(8rpx);
+  border-bottom-right-radius: 20rpx;
+}
+
+.bao {
+  font-size: 36rpx;
+  font-family: FZLTZHK--GBK1, FZLTZHK--GBK1;
+  font-weight: bold;
+  margin-bottom: 40rpx;
+}
+
+.meet {
+  font-size: 28rpx;
+  font-family: FZLTHJW--GB1, FZLTHJW--GB1;
+  font-weight: normal;
+}
+
+.detail-box {
+  position: relative;
+  margin: -60rpx 24rpx 0;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx 24rpx;
+  z-index: 0;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+}
+.words {
+  margin: 30rpx 10rpx 30rpx 20rpx;
+}
+.words .top {
+  display: flex;
+  align-items: center;
+}
+.words-show {
+  width: 36rpx;
+  height: 36rpx;
+  margin-left: 30rpx;
+}
+
+.word-list {
+  overflow: scroll;
+  max-height: 200rpx;
+  margin: 30rpx 0 10rpx;
+  font-size: 30rpx;
+  color: #888;
+}
+.word {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.detail-box .title {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.detail-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-list .box {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 150rpx;
+  margin: 50rpx 10rpx 30rpx;
+  font-size: 30rpx;
+  color: #888;
+}
+
+.box .img-box {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-bottom: 12rpx;
+  overflow: hidden;
+}
+
+.box .img {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.enter-active-class {
+  z-index: 100 !important;
+}
+
+.picture-close {
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.picture-close-icon {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.picture-list {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+
+.box-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.picture-list .title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+  padding: 20rpx 30rpx;
+}
+
+.picture-list .img-box {
+  width: 200rpx;
+  height: 200rpx;
+  border: #fff dashed 1rpx;
+  border-radius: 10rpx;
+  margin: 24rpx;
+}
+
+.picture-list .img-box .img {
+  width: 200rpx;
+  height: 200rpx;
+}
+.image-detail-box {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.image-detail {
+  position: relative;
+  border: #fff dashed 1rpx;
+  width: 500rpx;
+  height: 500rpx;
+}
+.image-detail .close {
+  position: absolute;
+  right: -60rpx;
+  top: -60rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+.image-detail .img {
+  width: 500rpx;
+  height: 500rpx;
+}

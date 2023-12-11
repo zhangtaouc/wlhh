@@ -18,6 +18,7 @@ Page({
     feature: {},
     indicatorColor: "#fff",
     indicatorActiveColor: "#00FF00",
+    notice: "",
   },
   setOtherPage() {
     this.setData({
@@ -275,6 +276,7 @@ Page({
         indicatorColor: data.indicatorColor,
         indicatorActiveColor: data.indicatorActiveColor,
         future: data.future,
+        notice: data.notice,
       });
       console.warn("小程序banners", data.banners);
       console.warn(

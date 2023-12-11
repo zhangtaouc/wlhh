@@ -9,6 +9,7 @@
       </swiper-item>
     </swiper>
   </view>
+  <van-notice-bar scrollable mode="closeable" left-icon="volume-o" text="{{notice}}" wx:if="{{notice}}" />
   <view class="content">
     <van-divider contentPosition="center">5月</van-divider>
     <view class="line-1">

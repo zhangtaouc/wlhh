@@ -16,7 +16,7 @@ Page({
     showTime: {},
     someThing: {},
     isShowWord: false,
-    meetInfo: []
+    meetInfo: [],
   },
 
   controlwOver() {
@@ -57,6 +57,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    const localData = wx.getStorageSync("wlh_metConfig");
+    console.log("本地", localData);
+    if (localData) {
+      this.parseData(JSON.parse(localData));
+    }
     this.initApp();
   },
 
@@ -75,20 +80,26 @@ Page({
           console.log("获取个人信息", config);
           const data = config?.data;
           if (data) {
-            that.setData({
-              headerBg: data.headerBg,
-              imageList: data.imageList,
-              map: data.map,
-              picture: data.picture,
-              contentTitle: data.contentTitle,
-              meetTime: data.meetTime,
-              someThing: data.someThing,
-              meetInfo: data.meetInfo
-            });
+            that.parseData(data);
+            wx.setStorageSync("wlh_metConfig", JSON.stringify(data));
             that.setTime();
           }
         },
       });
+    });
+  },
+
+  // 解析数据
+  parseData(data) {
+    this.setData({
+      headerBg: data.headerBg,
+      imageList: data.imageList,
+      map: data.map,
+      picture: data.picture,
+      contentTitle: data.contentTitle,
+      meetTime: data.meetTime,
+      someThing: data.someThing,
+      meetInfo: data.meetInfo,
     });
   },
 

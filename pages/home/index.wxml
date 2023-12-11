@@ -1,6 +1,6 @@
 <view class="home" style="filter:grayscale({{grayscale}})">
   <view class="my-swiper">
-    <swiper indicator-dots="true" autoplay="true" interval="3500" circular="true">
+    <swiper indicator-dots="true" autoplay="true" interval="3500" circular="true" indicator-active-color="{{indicatorActiveColor}}" indicator-color="{{indicatorColor}}">
       <swiper-item wx:for="{{banners}}" wx:key="index" wx:for-item="banner">
         <image src="{{banner.image}}" mode="widthFix" class="my-swiper-item-img" />
         <view class="my-swiper-item" wx:if="{{banner.text.length > 0}}">

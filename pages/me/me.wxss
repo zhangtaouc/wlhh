@@ -35,13 +35,13 @@
 }
 
 .header-content .day {
-  font-size: 200rpx;
-  font-weight: bolder;
+  font-size: 180rpx;
+  font-weight: bold;
   margin-top: 18rpx;
 }
 
 .min-bao {
-  margin: 160rpx 0 140rpx !important;
+  margin: 160rpx 0 120rpx !important;
   font-size: 30rpx;
   font-weight: normal !important;
 }

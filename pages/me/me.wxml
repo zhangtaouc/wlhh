@@ -1,69 +1,69 @@
 <view class="me">
-  <view class="header-part">
-    <image src="{{headerBg}}" class="header-part-bg" mode="widthFix" />
-    <view class="header-content">
-      <image src="../../images/me/change-icon.svg" mode="widthFix" class="change" bind:tap="changeShowTime" />
-      <view class="bao" wx:if="{{isShowHour}}">我们在一起<text class="day">{{showTime.hour}}</text>天啦</view>
-      <view class="bao min-bao" wx:else>
-        我们在一起<text class="day">{{showTime.min}}</text>啦
-      </view>
-      <view class="meet-time">♥2023.11.26 19:40♥</view>
-    </view>
-  </view>
-  <view class="detail-box">
-    <view class="title">{{contentTitle}}</view>
-    <view class="detail-list">
-      <view class="box picture" bind:tap="goMap">
-        <view class="img-box">
-          <image src="{{map.url}}" mode="" class="img" />
+    <view class="header-part">
+        <image src="{{headerBg}}" class="header-part-bg" mode="widthFix" />
+        <view class="header-content">
+            <image src="../../images/me/change-icon.svg" mode="widthFix" class="change" bind:tap="changeShowTime" />
+            <view class="bao" wx:if="{{isShowHour}}">我们在一起<text class="day">{{showTime.hour}}</text>天啦</view>
+            <view class="bao min-bao" wx:else>
+                我们在一起<text class="day">{{showTime.min}}</text>啦
+            </view>
+            <view class="meet-time" wx:for="{{meetInfo}}" wx:for-item="meet" wx:key="index">{{meet}}</view>
         </view>
-        <view>{{map.name}}</view>
-      </view>
-      <view class="box picture" bind:tap="controlwOver">
-        <view class="img-box">
-          <image src="{{picture.url}}" mode="" class="img" />
-        </view>
-        <view>{{picture.name}}</view>
-      </view>
     </view>
-  </view>
-  <view class="detail-box words" wx:if="{{someThing.title}}">
-    <view class="top" bind:tap="showWord">
-      <view class="title">{{someThing.title}}</view>
-      <image src="../../images/me/word-show.svg" mode="" class="words-show" wx:if="{{isShowWord}}" />
-      <image src="../../images/me/word-unShow.svg" mode="" class="words-show" wx:else />
-    </view>
-    <view class="word-list">
-      <view class="word" wx:for="{{someThing.content}}" wx:for-item="word">
-        <view>
-          <text wx:if="{{isShowWord}}">{{word.text}}</text>
-          <text wx:else>********</text>
+    <view class="detail-box">
+        <view class="title">{{contentTitle}}</view>
+        <view class="detail-list">
+            <view class="box picture" bind:tap="goMap">
+                <view class="img-box">
+                    <image src="{{map.url}}" mode="" class="img" />
+                </view>
+                <view>{{map.name}}</view>
+            </view>
+            <view class="box picture" bind:tap="controlwOver">
+                <view class="img-box">
+                    <image src="{{picture.url}}" mode="" class="img" />
+                </view>
+                <view>{{picture.name}}</view>
+            </view>
         </view>
-        <view>
-          <text>{{word.time}}</text>
-        </view>
-      </view>
     </view>
-  </view>
+    <view class="detail-box words" wx:if="{{someThing.title}}">
+        <view class="top" bind:tap="showWord">
+            <view class="title">{{someThing.title}}</view>
+            <image src="../../images/me/word-show.svg" mode="" class="words-show" wx:if="{{isShowWord}}" />
+            <image src="../../images/me/word-unShow.svg" mode="" class="words-show" wx:else />
+        </view>
+        <view class="word-list">
+            <view class="word" wx:for="{{someThing.content}}" wx:for-item="word" wx:key="index">
+                <view>
+                    <text wx:if="{{isShowWord}}">{{index+1}}、{{word.text}}</text>
+                    <text wx:else>********</text>
+                </view>
+                <view>
+                    <text>{{word.time}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
 </view>
 <van-overlay show="{{isShowOver}}">
-  <view class="picture-list" wx:if="{{isShowOver}}">
-    <view class="picture-close" bindtap="controlwOver">
-      <image src="../../images/me/close.svg" mode="" class="picture-close-icon" />
-    </view>
-    <view wx:for="{{imageList}}" wx:for-item="list" wx:key="index">
-      <view class="title">{{list.title}}</view>
-      <view class="box-list">
-        <view class="img-box" wx:for="{{list.list}}" wx:for-item="image" wx:key="k">
-          <image src="{{image}}" mode="" class="img" bind:tap="imageShow" data-image="{{image}}" />
+    <view class="picture-list" wx:if="{{isShowOver}}">
+        <view class="picture-close" bindtap="controlwOver">
+            <image src="../../images/me/close.svg" mode="" class="picture-close-icon" />
         </view>
-      </view>
+        <view wx:for="{{imageList}}" wx:for-item="list" wx:key="index">
+            <view class="title">{{list.title}}</view>
+            <view class="box-list">
+                <view class="img-box" wx:for="{{list.list}}" wx:for-item="image" wx:key="k">
+                    <image src="{{image}}" mode="" class="img" bind:tap="imageShow" data-image="{{image}}" />
+                </view>
+            </view>
+        </view>
     </view>
-  </view>
-  <view class="image-detail-box" wx:if="{{imageDetail}}">
-    <view class="image-detail" bind:tap="imageShow">
-      <image src="../../images/me/close.svg" mode="" class="close" />
-      <image src="{{imageDetail}}" mode="" class="img" />
+    <view class="image-detail-box" wx:if="{{imageDetail}}">
+        <view class="image-detail" bind:tap="imageShow">
+            <image src="../../images/me/close.svg" mode="" class="close" />
+            <image src="{{imageDetail}}" mode="" class="img" />
+        </view>
     </view>
-  </view>
 </van-overlay>

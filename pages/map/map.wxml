@@ -1,4 +1,4 @@
 <!-- 地图 -->
 <view class="map">
-  <map id="map" class="map" markers="{{markers}}" longitude="{{longitude}}" latitude="{{latitude}}"  polyline="{{polyline}}" scale="{{11}}" show-location="{{true}}" enable-satellite="{{false}}"></map>
+  <map id="map" class="map" markers="{{markers}}" longitude="{{longitude}}" latitude="{{latitude}}"  polyline="{{polyline}}" scale="{{meetMapConfig.scale}}" show-location="{{meetMapConfig.showLocation}}" enable-satellite="{{meetMapConfig.enableSatellite}}" enable-building="{{meetMapConfig.enableBuilding}}"></map>
 </view>

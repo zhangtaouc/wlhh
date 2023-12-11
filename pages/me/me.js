@@ -16,6 +16,7 @@ Page({
     showTime: {},
     someThing: {},
     isShowWord: false,
+    meetInfo: []
   },
 
   controlwOver() {
@@ -82,6 +83,7 @@ Page({
               contentTitle: data.contentTitle,
               meetTime: data.meetTime,
               someThing: data.someThing,
+              meetInfo: data.meetInfo
             });
             that.setTime();
           }

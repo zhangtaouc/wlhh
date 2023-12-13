@@ -20,7 +20,9 @@ Page({
   },
 
   controlwOver() {
-    this.setData({ isShowOver: !this.data.isShowOver });
+    wx.navigateTo({
+      url: "../imageShow/imageShow",
+    });
   },
   changeShowTime() {
     this.setData({

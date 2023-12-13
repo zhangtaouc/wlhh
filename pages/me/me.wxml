@@ -46,24 +46,3 @@
         </view>
     </view>
 </view>
-<van-overlay show="{{isShowOver}}">
-    <view class="picture-list" wx:if="{{isShowOver}}">
-        <view class="picture-close" bindtap="controlwOver">
-            <image src="../../images/me/close.svg" mode="" class="picture-close-icon" />
-        </view>
-        <view wx:for="{{imageList}}" wx:for-item="list" wx:key="index">
-            <view class="title">{{list.title}}</view>
-            <view class="box-list">
-                <view class="img-box" wx:for="{{list.list}}" wx:for-item="image" wx:key="k">
-                    <image src="{{image}}" mode="" class="img" bind:tap="imageShow" data-image="{{image}}" />
-                </view>
-            </view>
-        </view>
-    </view>
-    <view class="image-detail-box" wx:if="{{imageDetail}}">
-        <view class="image-detail" bind:tap="imageShow">
-            <image src="../../images/me/close.svg" mode="" class="close" />
-            <image src="{{imageDetail}}" mode="" class="img" />
-        </view>
-    </view>
-</van-overlay>

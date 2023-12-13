@@ -1,0 +1,21 @@
+<view class="image-container">
+  <view wx:for="{{imageList}}" wx:for-item="images" wx:key="index" class="image-big-box">
+    <view class="{{index > 0 ? 'title-1' : ''}}">
+      <van-tag type="success">{{images.title}}</van-tag><text class="desc" wx:if="{{images.desc}}">{{images.desc}}</text>
+    </view>
+    <view class="image-box">
+      <view class="image" wx:for="{{images.list}}" wx:for-item="image" wx:key="i" bind:tap="imageShow" data-image="{{image}}">
+        <van-image width="150rpx" height="150rpx" src="{{image}}" lazy-load fit="contain" />
+      </view>
+    </view>
+  </view>
+</view>
+
+<van-overlay show="{{imageDetail}}">
+  <view class="image-detail-box" wx:if="{{imageDetail}}">
+    <view class="image-detail" bind:tap="imageShow">
+      <image src="../../images/me/close.svg" mode="" class="close" />
+      <image src="{{imageDetail}}" mode="" class="img" />
+    </view>
+  </view>
+</van-overlay>

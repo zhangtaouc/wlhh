@@ -2,10 +2,16 @@ const app = getApp();
 
 Page({
   data: {
-    isShowOverFlow: false,
+    isShowMeetOverFlow: false,
     isShowMeet: false,
     overFlowInfos: { title: "", info: [] },
     isShowFirstVisit: true,
+    otherOverFlow: {
+      isShowOtherOverFlow: false,
+      fontSize: 44,
+      fontColor: '#fff',
+      content:[]
+    },
     username: "",
     usernameInfo: "",
     isShowOtherMonth: false,
@@ -43,7 +49,9 @@ Page({
     }
   },
   closeOverFlow() {
-    this.setData({ isShowOverFlow: false });
+    const otherOverFlow = this.data.otherOverFlow
+    otherOverFlow.isShowOtherOverFlow = false
+    this.setData({ isShowMeetOverFlow: false, otherOverFlow });
   },
   onClickOverFlow(e) {
     console.log(e);
@@ -170,7 +178,7 @@ Page({
       this.setData({ overFlowInfos: overFlowInfo });
     }
     this.setData({ isShowMeet: number === 1 });
-    this.setData({ isShowOverFlow: true });
+    this.setData({ isShowMeetOverFlow: true });
   },
   // 事件处理函数
   bindViewTap() {
@@ -256,6 +264,7 @@ Page({
           "https://zhangtaouc-1314929551.cos.ap-nanjing.myqcloud.com/miniProgram/wlh/config/wlhConfig.json",
         method: "GET",
         success(config) {
+          console.warn('获取基本数据成功', config)
           if (config.data) {
             that.parseMeetInfo(config.data);
             wx.setStorageSync("wlh_meetInfo", JSON.stringify(config.data));
@@ -277,6 +286,7 @@ Page({
         indicatorActiveColor: data.indicatorActiveColor,
         future: data.future,
         notice: data.notice,
+        otherOverFlow: data.otherOverFlow
       });
       console.warn("小程序banners", data.banners);
       console.warn(
@@ -303,6 +313,6 @@ Page({
     meetContent.answer.forEach((i) => {
       overFlowInfo.info.push(i);
     });
-    this.setData({ overFlowInfos: overFlowInfo, isShowOverFlow: true });
+    this.setData({ overFlowInfos: overFlowInfo, isShowMeetOverFlow: true });
   },
 });

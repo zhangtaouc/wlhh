@@ -183,6 +183,22 @@ swiper {
   animation-name: textAnimation;
   animation-duration: 13s;
 }
+.other-over {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 50rpx;
+  color: #fff;
+  padding: 20rpx 20rpx 40rpx 20rpx;
+  width: 450rpx;
+  height: 600rpx;
+  border-radius: 50rpx 0 80rpx;
+  position: relative;
+  background: rgba(245, 223, 255, 0.1);
+  backdrop-filter: blur(97.86px);
+  -webkit-backdrop-filter: blur(97.86px);
+}
 
 .visiter {
   position: relative;
@@ -223,3 +239,6 @@ swiper {
   height: 800rpx;
   background-color: rgb(83, 240, 200);
 }
+.no-bg {
+  background: none !important;
+} 

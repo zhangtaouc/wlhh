@@ -115,8 +115,8 @@
   </view>
 </view>
 
-<van-overlay show="{{ (isShowOverFlow || isShowFirstVisit) && isLoadSuccess}}" bind:click="closeOverFlow">
-  <view class="over-part" wx:if="{{!isShowFirstVisit}}">
+<van-overlay class-name="{{otherOverFlow.isShowOtherOverFlow?  'no-bg':''}}" show="{{ (isShowMeetOverFlow || isShowFirstVisit || otherOverFlow.isShowOtherOverFlow) && isLoadSuccess}}" bind:click="closeOverFlow">
+  <view class="over-part" wx:if="{{isShowMeetOverFlow}}">
     <view class="first-into" wx:if="{{isShowMeet}}">
       <view class="main">{{overFlowInfso.title}}</view>
       <view class="main">你还记得哪天认识你的吗？</view>
@@ -131,10 +131,15 @@
       <view class="main" wx:for="{{overFlowInfos.info}}" wx:for-item="infos" wx:key="infos">{{infos}}</view>
     </view>
   </view>
-  <view class="over-part" wx:else>
+  <view class="over-part" wx:if="{{isShowFirstVisit}}">
     <view class="visiter">
       <view class="visiter-title">🤗🤗<text class="visiter-title-info">{{usernameInfo}}</text></view>
       <van-field value="{{ username }}" placeholder="请输入名字小写首字母" input-align="center" autosize bind:change="changeName" />
+    </view>
+  </view>
+  <view class="over-part" wx:if="{{otherOverFlow.isShowOtherOverFlow &&!isShowFirstVisit}}">
+    <view class="other-over" style="font-size: {{otherOverFlow.fontSize}}rpx;color: {{otherOverFlow.fontColor}}">
+    <view wx:for="{{otherOverFlow.content}}" wx:for-item="word" wx:key="index">{{word}}</view>
     </view>
   </view>
 </van-overlay>

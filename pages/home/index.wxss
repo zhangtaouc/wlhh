@@ -184,6 +184,7 @@ swiper {
   animation-duration: 13s;
 }
 .other-over {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -198,6 +199,14 @@ swiper {
   background: rgba(245, 223, 255, 0.1);
   backdrop-filter: blur(97.86px);
   -webkit-backdrop-filter: blur(97.86px);
+  overflow: hidden;
+}
+.other-over-bg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 .visiter {

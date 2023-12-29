@@ -139,6 +139,7 @@
   </view>
   <view class="over-part" wx:if="{{otherOverFlow.isShowOtherOverFlow &&!isShowFirstVisit}}">
     <view class="other-over" style="font-size: {{otherOverFlow.fontSize}}rpx;color: {{otherOverFlow.fontColor}}">
+    <image src="{{otherOverFlow.img}}"  class="other-over-bg" wx:if="{{otherOverFlow.img}}" style="opacity: {{otherOverFlow.imageOpacity}};"/>
     <view wx:for="{{otherOverFlow.content}}" wx:for-item="word" wx:key="index">{{word}}</view>
     </view>
   </view>

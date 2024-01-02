@@ -10,20 +10,25 @@
     </swiper>
   </view>
   <van-notice-bar scrollable mode="closeable" left-icon="volume-o" text="{{notice}}" wx:if="{{notice}}" />
+
   <view class="content">
-    <van-divider contentPosition="center">5月</van-divider>
-    <view class="line-1">
-      <view class="cycle meet" data-index="{{1}}" bindtap="onClickOverFlow">
-        <image src="../../images/home/cycle-meet-bg.png" class="cycle-bg" />
-        <view>遇见</view>
-        <view class="line"></view>
-        <view>你</view>
+    <van-divider contentPosition="{{importantMeet.position}}" wx:if="{{importantMeet.title}}">{{importantMeet.title}}</van-divider>
+    <view class="important-day" wx:if="{{importantMeet.title}}">
+      <view class="meet important-cycle" data-meet="{{meet}}" bindtap="clickMeet" wx:for="{{importantMeet.list}}" wx:key="i" wx:for-item="meet">
+        <image src="{{meet.meetImage}}" class="cycle-bg" />
+        <view>{{meet.meetTitle[0]}}</view>
+        <view class="desc">{{meet.meetTitle[1]}}</view>
       </view>
     </view>
-    <view bindtap="setOtherPage" wx:if="{{isShowOtherMonth}}" class="colse-box">
+    <view class="tab-list" wx:if="{{tabList.length>0}}">
+      <van-tabs active="{{activeTab}}" bind:click="changeyear">
+        <van-tab title="{{tab}}" name="{{tab}}" wx:for="{{tabList}}" wx:key="i" wx:for-item="tab"></van-tab>
+      </van-tabs>
+    </view>
+    <view bindtap="setOtherPage" wx:if="{{isShowOtherMonth && activeTab ==='2023'}}" class="colse-box">
       <image src="../../images/home/close.svg" mode="widthFix" class="colse-box-img" />
     </view>
-    <view wx:if="{{isShowOtherMonth}}" class="page-box">
+    <view wx:if="{{isShowOtherMonth && activeTab ==='2023'}}" class="page-box">
       <!-- <image src="../../images/home/close.png" mode="widthFix" class="close" /> -->
       <van-divider contentPosition="center">6月</van-divider>
       <view class="line-1">
@@ -81,8 +86,8 @@
       </view>
     </view>
 
-    <van-divider wx:if="{{!isShowOtherMonth}}" contentPosition="center" bindtap="setOtherPage">6月-8月</van-divider>
-    <view wx:if="{{!isShowOtherMonth}}" class="other-month" bindtap="setOtherPage">
+    <van-divider wx:if="{{!isShowOtherMonth && activeTab ==='2023'}}" contentPosition="center" bindtap="setOtherPage">6月-8月</van-divider>
+    <view wx:if="{{!isShowOtherMonth && activeTab ==='2023'}}" class="other-month" bindtap="setOtherPage">
       <view class="cycle month-6 small">
         <image src="../../images/home/cycle-fangao-bg.png" class="cycle-bg" />
       </view>
@@ -94,7 +99,7 @@
         <image src="../../images/home/cycle-hh-bg.png" class="cycle-bg" />
       </view>
     </view>
-    <view wx:for="{{meetLists}}" wx:key="index" wx:for-item="meetList">
+    <view wx:for="{{showMeetLists}}" wx:key="index" wx:for-item="meetList">
       <van-divider contentPosition="{{meetList[0].monthPosition}}">{{meetList[0].month}}月</van-divider>
       <view class="line-1">
         <view class="cycle month-7" data-meet="{{meet}}" bindtap="clickMeet" wx:for="{{meetList}}" wx:key="i" wx:for-item="meet">
@@ -115,8 +120,8 @@
   </view>
 </view>
 
-<van-overlay show="{{ (isShowOverFlow || isShowFirstVisit) && isLoadSuccess}}" bind:click="closeOverFlow">
-  <view class="over-part" wx:if="{{!isShowFirstVisit}}">
+<van-overlay class-name="{{otherOverFlow.isShowOtherOverFlow?  'no-bg':''}}" show="{{ (isShowMeetOverFlow || isShowFirstVisit || otherOverFlow.isShowOtherOverFlow) && isLoadSuccess}}" bind:click="closeOverFlow">
+  <view class="over-part" wx:if="{{isShowMeetOverFlow}}">
     <view class="first-into" wx:if="{{isShowMeet}}">
       <view class="main">{{overFlowInfso.title}}</view>
       <view class="main">你还记得哪天认识你的吗？</view>
@@ -131,10 +136,16 @@
       <view class="main" wx:for="{{overFlowInfos.info}}" wx:for-item="infos" wx:key="infos">{{infos}}</view>
     </view>
   </view>
-  <view class="over-part" wx:else>
+  <view class="over-part" wx:if="{{isShowFirstVisit}}">
     <view class="visiter">
       <view class="visiter-title">🤗🤗<text class="visiter-title-info">{{usernameInfo}}</text></view>
       <van-field value="{{ username }}" placeholder="请输入名字小写首字母" input-align="center" autosize bind:change="changeName" />
+    </view>
+  </view>
+  <view class="over-part" wx:if="{{otherOverFlow.isShowOtherOverFlow &&!isShowFirstVisit}}">
+    <view class="other-over" style="font-size: {{otherOverFlow.fontSize}}rpx;color: {{otherOverFlow.fontColor}}">
+      <image src="{{otherOverFlow.img}}" class="other-over-bg" wx:if="{{otherOverFlow.img}}" style="opacity: {{otherOverFlow.imageOpacity}};" />
+      <view wx:for="{{otherOverFlow.content}}" wx:for-item="word" wx:key="index">{{word}}</view>
     </view>
   </view>
 </van-overlay>

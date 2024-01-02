@@ -15,6 +15,7 @@ App({
   },
   globalData: {
     meetMap: [],
+    meetMaps: {},
     meetMapConfig: {
       content: 'wlhh',
       borderColor: '#fff',

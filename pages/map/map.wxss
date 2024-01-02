@@ -3,3 +3,12 @@
   width: 100vw;
   height: 100vh;
 }
+.control-box {
+  position: absolute;
+  top: 0rpx;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  backdrop-filter: blur(97.86px);
+  -webkit-backdrop-filter: blur(97.86px);
+}

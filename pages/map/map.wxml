@@ -1,4 +1,9 @@
 <!-- 地图 -->
 <view class="map">
-  <map id="map" class="map" markers="{{markers}}" longitude="{{longitude}}" latitude="{{latitude}}"  polyline="{{polyline}}" scale="{{meetMapConfig.scale}}" show-location="{{meetMapConfig.showLocation}}" enable-satellite="{{meetMapConfig.enableSatellite}}" enable-building="{{meetMapConfig.enableBuilding}}"></map>
+  <map id="map" class="map" markers="{{markers}}" longitude="{{longitude}}" latitude="{{latitude}}" polyline="{{polyline}}" scale="{{meetMapConfig.scale}}" show-location="{{meetMapConfig.showLocation}}" enable-satellite="{{meetMapConfig.enableSatellite}}" enable-building="{{meetMapConfig.enableBuilding}}"></map>
+  <view class="control-box">
+    <van-tabs active="{{activeTab}}" bind:click="changeyear">
+      <van-tab title="{{tab}}" name="{{tab}}" wx:for="{{tabList}}" wx:key="i" wx:for-item="tab"></van-tab>
+    </van-tabs>
+  </view>
 </view>

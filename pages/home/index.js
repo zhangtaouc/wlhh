@@ -2,10 +2,16 @@ const app = getApp();
 
 Page({
   data: {
-    isShowOverFlow: false,
+    isShowMeetOverFlow: false,
     isShowMeet: false,
     overFlowInfos: { title: "", info: [] },
     isShowFirstVisit: true,
+    otherOverFlow: {
+      isShowOtherOverFlow: false,
+      fontSize: 44,
+      fontColor: "#fff",
+      content: [],
+    },
     username: "",
     usernameInfo: "",
     isShowOtherMonth: false,
@@ -14,11 +20,18 @@ Page({
     opacity: 0,
     answer: "888888888888888",
     banners: [],
-    meetLists: [],
+    meetLists: {},
+    showMeetLists: [],
     feature: {},
     indicatorColor: "#fff",
     indicatorActiveColor: "#00FF00",
     notice: "",
+    importantMeetList: {
+      title: "",
+      list: [],
+    },
+    tabList: [],
+    activeTab: "",
   },
   setOtherPage() {
     this.setData({
@@ -28,6 +41,17 @@ Page({
   goMap() {
     wx.navigateTo({
       url: "../map/map",
+    });
+  },
+
+  changeyear(e) {
+    console.log(e.detail.title, this.data.meetLists[e.detail.title]);
+    this.setData({
+      isShowOtherMonth: false,
+    });
+    this.setData({
+      showMeetLists: this.data.meetLists[e.detail.title],
+      activeTab: e.detail.title,
     });
   },
   changeName(event) {
@@ -43,7 +67,9 @@ Page({
     }
   },
   closeOverFlow() {
-    this.setData({ isShowOverFlow: false });
+    const otherOverFlow = this.data.otherOverFlow;
+    otherOverFlow.isShowOtherOverFlow = false;
+    this.setData({ isShowMeetOverFlow: false, otherOverFlow });
   },
   onClickOverFlow(e) {
     console.log(e);
@@ -170,7 +196,7 @@ Page({
       this.setData({ overFlowInfos: overFlowInfo });
     }
     this.setData({ isShowMeet: number === 1 });
-    this.setData({ isShowOverFlow: true });
+    this.setData({ isShowMeetOverFlow: true });
   },
   // 事件处理函数
   bindViewTap() {
@@ -237,7 +263,6 @@ Page({
 
   // 解析配置
   parseAppConfig(data) {
-    app.globalData.meetMap = data.meetMap;
     this.setData({
       grayscale: data?.grayscale || "0",
       answer: data?.answer || "00000",
@@ -256,6 +281,7 @@ Page({
           "https://zhangtaouc-1314929551.cos.ap-nanjing.myqcloud.com/miniProgram/wlh/config/wlhConfig.json",
         method: "GET",
         success(config) {
+          console.warn("获取基本数据成功", config);
           if (config.data) {
             that.parseMeetInfo(config.data);
             wx.setStorageSync("wlh_meetInfo", JSON.stringify(config.data));
@@ -268,25 +294,41 @@ Page({
   // 解析相遇信息
   parseMeetInfo(data) {
     app.globalData.meetMap = data.meetMap;
+    app.globalData.meetMaps = data.meetMaps;
     app.globalData.meetMapConfig = data.meetMapConfig;
+    const tabList = [];
     if (data?.banners?.length > 0) {
+      let showMeetLists = [];
+      for (let meet in data.meetLists) {
+        tabList.push(meet);
+      }
+      const activeTab = tabList[tabList.length - 1];
+      showMeetLists = data.meetLists[activeTab];
       this.setData({
         banners: data.banners,
-        meetLists: data.meetLists[2023],
+        meetLists: data.meetLists,
+        showMeetLists,
         indicatorColor: data.indicatorColor,
         indicatorActiveColor: data.indicatorActiveColor,
         future: data.future,
         notice: data.notice,
+        otherOverFlow: data.otherOverFlow,
+        importantMeet: data.importantMeet,
+        activeTab,
+        tabList,
       });
       console.warn("小程序banners", data.banners);
       console.warn(
         "相遇信息",
-        data.meetLists[2023],
+        data.meetLists,
         data.future,
         data,
         data.meetMap,
         app.globalData.meetMap,
-        app.globalData.meetMapConfig
+        app.globalData.meetMapConfig,
+        data.importantMeet,
+        tabList,
+        activeTab
       );
     }
   },
@@ -303,6 +345,6 @@ Page({
     meetContent.answer.forEach((i) => {
       overFlowInfo.info.push(i);
     });
-    this.setData({ overFlowInfos: overFlowInfo, isShowOverFlow: true });
+    this.setData({ overFlowInfos: overFlowInfo, isShowMeetOverFlow: true });
   },
 });

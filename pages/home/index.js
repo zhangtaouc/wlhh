@@ -316,6 +316,7 @@ Page({
         importantMeet: data.importantMeet,
         activeTab,
         tabList,
+        otherOverFlow: data.otherOverFlow,
       });
       console.warn("小程序banners", data.banners);
       console.warn(
